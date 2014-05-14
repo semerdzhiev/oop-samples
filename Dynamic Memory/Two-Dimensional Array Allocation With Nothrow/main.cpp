@@ -6,6 +6,15 @@
 
 	В този случай, ако заделянето е неуспешно, new не хвърля
 	изключение, а вместо това връща NULL
+
+	Употреба:
+		За да се провери поведението на програмата при грешка
+		може да се въведат големи числа за брой редове и колони,
+		например:
+
+		Enter Rows: 111111111
+		Enter Cols: 111111111
+
 */
 
 #include <iostream>
@@ -17,14 +26,15 @@
 ///
 void Free(int** ppArray, size_t Rows)
 {
-	assert(ppArray != NULL);
-
-	for(size_t i = 0; i < Rows; i++)
+	if(ppArray != NULL)
 	{
-		delete [] ppArray[i];
-	}
+		for(size_t i = 0; i < Rows; i++)
+		{
+			delete [] ppArray[i];
+		}
 
-	delete [] ppArray;
+		delete [] ppArray;
+	}
 }
 
 
@@ -72,13 +82,24 @@ int main()
 
 	if( ! ppArray)
 	{
-		std::cerr << "Allocation failed!";
+		// errno съдържа код, който описва грешката
+		// strerror получава код на грешка и връща текст, който я описва
+		std::cerr
+			<< "ERROR: Allocation failed! (errno="
+			<< errno
+			<< ", "
+			<< strerror(errno)
+			<< ")\n";
+
 		return 1;
 	}
 
 	// Тук можем да използваме масива за нещо полезно
 
 	Free(ppArray, Rows);
+	ppArray = NULL;
+
+	// Продължаваме с програмата ...
 
 	return 0;
 }

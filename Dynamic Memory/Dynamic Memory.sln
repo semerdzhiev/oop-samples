@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Two-Dimensional Array Allocation With Nothrow", "Two-Dimensional Array Allocation With Nothrow\Two-Dimensional Array Allocation With Nothrow.vcxproj", "{F8DF5DF6-7BEA-4D36-8755-D1AAD8E9A4BB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Two-Dimensional Array Allocation With Exceptions", "Two-Dimensional Array Allocation With Exceptions\Two-Dimensional Array Allocation With Exceptions.vcxproj", "{5786160A-642F-46C0-82E9-639178610FD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{F8DF5DF6-7BEA-4D36-8755-D1AAD8E9A4BB}.Debug|Win32.Build.0 = Debug|Win32
 		{F8DF5DF6-7BEA-4D36-8755-D1AAD8E9A4BB}.Release|Win32.ActiveCfg = Release|Win32
 		{F8DF5DF6-7BEA-4D36-8755-D1AAD8E9A4BB}.Release|Win32.Build.0 = Release|Win32
+		{5786160A-642F-46C0-82E9-639178610FD3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5786160A-642F-46C0-82E9-639178610FD3}.Debug|Win32.Build.0 = Debug|Win32
+		{5786160A-642F-46C0-82E9-639178610FD3}.Release|Win32.ActiveCfg = Release|Win32
+		{5786160A-642F-46C0-82E9-639178610FD3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
