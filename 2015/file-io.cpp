@@ -23,10 +23,13 @@ struct Inventory {
 		ifs >> intnum >> dislocation >> weight;
 	}
 
-
-	void print() {
-		cout << intnum << " is located in " << dislocation << " and has weight " << weight;
-
+	void print(ostream& ostr) {
+		if (dislocation && weight) { 
+			ostr << intnum 
+				<< " is located in " << dislocation 
+				<< " and has weight " << weight
+				<< endl;
+		}
 	}
 
 	void write(ofstream &ofs) {
@@ -34,13 +37,11 @@ struct Inventory {
 	}
 
 	void write_binary(ofstream &ofs) {
-		unsigned int msize = strlen(intnum);
-
+		unsigned int msize = strlen(intnum) + 1;
 		ofs.write((const char *) &msize, 4);
 		ofs.write(intnum, msize);
 
-		msize = strlen(dislocation);
-
+		msize = strlen(dislocation) + 1;
 		ofs.write((const char *) &msize, 4);
 		ofs.write(dislocation, msize);
 
@@ -55,9 +56,15 @@ ifstream& operator >> (ifstream &ifs, Inventory* inv) {
 	return ifs;
 }
 
+ostream& operator << (ostream &ostr, Inventory* inv) {
+	inv->print(ostr);
+	return ostr;
+}
+
  // constructor
-Inventory::Inventory() : weight(0) {
-	cout << "Object created. Address is " << hex << this;
+Inventory::Inventory() 
+	: weight(0), dislocation(NULL), intnum(NULL) {
+	cout << "Inventory object created. Address is " << hex << (void*) this << endl;
 	dislocation = new char[128];
 	intnum = new char[128];
 }
@@ -97,9 +104,30 @@ void removeInventory(Inventory *self) {
 
 }
 
+inline void be2le(unsigned int& v) {
+	// no braces here, because
+	// << and >> are higher than & and it is higher than |
+	v =  v << 24 |
+	v >> 8 & 0x0000FF00 |
+	v << 8 & 0x00FF0000 |
+	v >> 24;
+	
+	// alternate :
+	/* 
+
+	( v << 24 ) + ((v & 0x00FF0000) >> 8) + ((v & 0x0000FF00) << 8) + (v >> 24)
+
+	or 
+
+	v << 24 | (v & 0x00FF0000) >> 8 | (v & 0x0000FF00) << 8 | v >> 24
+
+	*/
+}
+
 int main() {
 	// allocate memory
 	Inventory* inv[7];
+	memset(inv, 0, sizeof(inv));
 
 	unsigned int icount;
 
@@ -114,7 +142,11 @@ int main() {
 	fgets(buf, 1024, fh);		// read all until the end */
 
 // C++ Style
+// input files tream - ifstream
 	ifstream ifs("c:\\temp\\INPUT.txt");
+
+// output file stream - ofstream
+	ofstream ofs("c:\\temp\\INPUT.bin");
 
 	if  (! ifs.is_open()) {
 		cout << "error opening file";	
@@ -126,10 +158,42 @@ int main() {
 	for (auto i=0; i<icount && i<(sizeof(inv) / sizeof(Inventory*)); i++) {
 		inv[i] = new Inventory;
 		ifs >> inv[i];
+		cout << inv[i];
+	}
+
+	int le = 'A';
+
+	cout << ifs.tellg() << " bytes read";
+
+	ofs.write((char*) &icount, sizeof(icount));
+
+	for ( Inventory* ielem : inv ) {
+		// if not NULL pointer
+		if (ielem) {
+			ielem->write_binary(ofs);
+		}
 	}
 
 //	fclose(fh);
 	return 0;
 }
 
+/*
+
+	XX XX XX XX - 4 bytes integer for number of inventories
+
+	X packages of bytes in the following order :
+
+	{
+		NN NN NN NN - 4 bytes - integer for size of character string
+		AA .. AA	- N bytes - null terminated string 
+
+		NN NN NN NN - 4 bytes - integer for size of character string
+		AA .. AA	- N bytes - null terminated string 
+
+		FF FF FF FF - 4 bytes for floating point variable
+
+	}
+
+*/
 
