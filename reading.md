@@ -28,6 +28,13 @@ Gamma, Erich; Helm, Richard; Johnson, Ralph; Vlissides, John (1995) **Design Pat
 
 
 
+Git
+-------------
+
+Chacon, Scott; Straub, Ben (2014) **Pro Git, 2nd Edition**. http://git-scm.com/book/en/v2
+
+
+
 Сайтове с Tutorial и Reference материали
 -------------
 
