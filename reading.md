@@ -1,11 +1,11 @@
-Полезни източници
+РџРѕР»РµР·РЅРё РёР·С‚РѕС‡РЅРёС†Рё
 ===================
 
 
-ООП на C++
+РћРћРџ РЅР° C++
 -------------
 
-Майерс, Скот (2004) **По-ефективен C++: 35 начина да подобрите своите програми и проекти**. София: ЗеСТ Прес. ISBN 954-9341-03-8.
+РњР°Р№РµСЂСЃ, РЎРєРѕС‚ (2004) **РџРѕ-РµС„РµРєС‚РёРІРµРЅ C++: 35 РЅР°С‡РёРЅР° РґР° РїРѕРґРѕР±СЂРёС‚Рµ СЃРІРѕРёС‚Рµ РїСЂРѕРіСЂР°РјРё Рё РїСЂРѕРµРєС‚Рё**. РЎРѕС„РёСЏ: Р—РµРЎРў РџСЂРµСЃ. ISBN 954-9341-03-8.
 Meyers, S. (2005). **Effective C++: 55 specific ways to improve your programs and designs, 3rd Edition**. Addison-Wesley Professional. ISBN 978-0321334879.
 Meyers, S. (1996). **More effective C++: 35 new ways to improve your programs and designs**. Addison-Wesley Professional. ISBN 978-0201633719.
 Overland, Brian (2011) **C++ Without Fear: A Beginner's Guide That Makes You Feel Smart, 2nd Edition**. Prentice Hall. ISBN 978-0132673266.
@@ -13,15 +13,15 @@ Stroustrup, Bjarne (2014) **Programming: Principles and Practice Using C++, 2nd 
 Stroustrup, Bjarne (2013) **The C++ Programming Language, 4th Edition**. Addison-Wesley. ISBN 978-0321563842.
 
 
-Шаблони за дизайн
+РЁР°Р±Р»РѕРЅРё Р·Р° РґРёР·Р°Р№РЅ
 -------------
 
 Gamma, Erich; Helm, Richard; Johnson, Ralph; Vlissides, John (1995) **Design Patterns: Elements of Reusable Object-oriented Software**. Reading, MA: Addison-Wesley. ISBN 078-5342633610.
 
-Гама, Ерик; Хелм, Ричард; Джонсън, Ралф; Влисидес, Джон. (2005) **Шаблони за дизайн: Елементи на обектно-ориентирания софтуер за многократно използване**. София: СофтПрес. ISBN 954-685-352-6.
+Р“Р°РјР°, Р•СЂРёРє; РҐРµР»Рј, Р РёС‡Р°СЂРґ; Р”Р¶РѕРЅСЃСЉРЅ, Р Р°Р»С„; Р’Р»РёСЃРёРґРµСЃ, Р”Р¶РѕРЅ. (2005) **РЁР°Р±Р»РѕРЅРё Р·Р° РґРёР·Р°Р№РЅ: Р•Р»РµРјРµРЅС‚Рё РЅР° РѕР±РµРєС‚РЅРѕ-РѕСЂРёРµРЅС‚РёСЂР°РЅРёСЏ СЃРѕС„С‚СѓРµСЂ Р·Р° РјРЅРѕРіРѕРєСЂР°С‚РЅРѕ РёР·РїРѕР»Р·РІР°РЅРµ**. РЎРѕС„РёСЏ: РЎРѕС„С‚РџСЂРµСЃ. ISBN 954-685-352-6.
 
 
-Сайтове с Tutorial и Reference материали
+РЎР°Р№С‚РѕРІРµ СЃ Tutorial Рё Reference РјР°С‚РµСЂРёР°Р»Рё
 -------------
 
 C++ Language Tutorial. http://www.cplusplus.com/doc/tutorial/
