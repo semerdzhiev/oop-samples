@@ -10,8 +10,8 @@ union Test
 
 union Address
 {
-	unsigned long addr_l;    // 32-bit
-	unsigned char addr_c[4]; // 32-bit
+	unsigned long address;   // 32-bit
+	unsigned char octets[4]; // 32-bit
 };
 
 
@@ -113,18 +113,18 @@ int main()
 	// през различни типове
 	Address a;
 
-	a.addr_c[0] = 1;
-	a.addr_c[1] = 0;
-	a.addr_c[2] = 168;
-	a.addr_c[3] = 192;
+	a.octets[0] = 1;
+	a.octets[1] = 0;
+	a.octets[2] = 168;
+	a.octets[3] = 192;
 
 	std::cout
-		<< "Address:\n   0x" << std::hex << a.addr_l
+		<< "Address:\n   0x" << std::hex << a.address
 		<< std::dec
-		<< "\n   " << (int)a.addr_c[3]
-		<< '.'     << (int)a.addr_c[2]
-		<< '.'     << (int)a.addr_c[1]
-		<< '.'     << (int)a.addr_c[0]
+		<< "\n   " << (int)a.octets[3]
+		<< '.'     << (int)a.octets[2]
+		<< '.'     << (int)a.octets[1]
+		<< '.'     << (int)a.octets[0]
 		<< "\n\n";
 
 
