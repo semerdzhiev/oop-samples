@@ -1,7 +1,7 @@
 ﻿// homework.help.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <cstring>
 
 const int CGROW = 10; 
 
@@ -21,7 +21,8 @@ uint grow(void **wh, uint ccount, uint ngrow = CGROW) {
 
 	if ( *wh ) { 
 		// освобождаване на заделената преди памет
-		delete *wh;
+        //  (char*) typecast за съвместимост с G++
+		delete (char*) *wh;
 	}
 
 	// заделяне на нова памет с новия размер
@@ -34,7 +35,8 @@ uint grow(void **wh, uint ccount, uint ngrow = CGROW) {
 	memcpy(*wh, temp, sizeof(void*) * ccount );
 
 	// изтриване на временната памет
-	delete temp;
+    //  (char*) typecast за съвместимост с G++
+	delete (char*) temp;
 
 	return ngrow + ccount;
 }
@@ -58,7 +60,7 @@ uint growt(T *&wh, uint  ccount, uint ngrow =  CGROW) {
 	}
 
 	// заделяне на нова памет с новия размер
-	wh = new T[ncount+ngrow];
+	wh = new T[ccount+ngrow];
 
 	// ако не сме успели да заделим памет
 	if ( wh == NULL ) return 0;
@@ -67,16 +69,16 @@ uint growt(T *&wh, uint  ccount, uint ngrow =  CGROW) {
 	memcpy(wh, temp, sizeof(T) * ccount);
 
 	// изтриване на временната памет
-	delete temp;
+	delete (char*) temp;
 
-	return ncount+ngrow;
+	return ccount+ngrow;
 }
 
 int *tarr;
 char ** strings;
 
 int main(int argc, char* argv[]) {
-	grow((void**))&strings, 0);
+	grow((void**)&strings, 0);
 	uint csize = growt<int>(tarr, 0);
 	
 	growt<char*>(strings, 0);
