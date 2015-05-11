@@ -2,20 +2,37 @@
 //
 
 #include "stdafx.h"
+#include <stdio.h>
+
+/*
+
+ [ BASE ] (abstract)
+    ^
+	|
+  [ A ]
+    ^
+	|
+  [ B ]--->[ C ]
+    ^        ^
+    |        |
+  [ E ]    [ D ]
+
+
+ */
 
 // abstract class
 // the whoami() method has no implementation
 // so instances of the BASE class are not
 // directly possible
-class Base { 
+class Base {
 	public:
-		virtual void whoami() = NULL;
+		virtual void whoami() = 0;
 };
 
 class A : public Base {
 
 public:
-	A() { 
+	A() {
 		printf("construct A \n");
 	}
 
@@ -24,10 +41,10 @@ public:
 	}
 };
 
-class C { 
+class C {
 	char c;
 public:
-	C() { 
+	C() {
 		printf("construct C \n");
 	}
 
@@ -36,12 +53,12 @@ public:
 	}
 };
 
-class B : public A { 
-	// the concstructor of C is going to be called 
+class B : public A {
+	// the concstructor of C is going to be called
 	// before the constructor of B
 	C inst;
 public:
-	B() { 
+	B() {
 		printf("construct B \n");
 	}
 
@@ -51,22 +68,22 @@ public:
 
 };
 
-class D : public C { 
+class D : public C {
 
 public:
-	D() { 
+	D() {
 		printf("construct D \n");
 	}
-	
+
 	void whoami() {
 		printf ("i am D \n");
 	}
 };
 
-class E : public B { 
+class E : public B {
 	public:
 
-	E() { 
+	E() {
 		printf("construct E \n");
 	}
 
@@ -80,14 +97,14 @@ class E : public B {
 //
 
 int main() {
-	Base* instances[] =  { 
+	Base* instances[] =  {
 		new B(),
 		new E(),
 		new A(),
 	};
 
 	printf("size of class E : %u \n", sizeof(E));
-	
+
 	for (int i = 0; i < sizeof(instances)/sizeof(A*); i++) {
 		instances[i]->whoami();
 	}
