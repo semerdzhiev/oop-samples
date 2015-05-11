@@ -1,9 +1,13 @@
 // file-io.cpp : Defines the entry point for the console application.
 //
 
+// note -> use g++ file-io.cpp -std=c++11
+// to compile with GNU C
+
 #include "stdafx.h"
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -167,6 +171,7 @@ int main() {
 
 	ofs.write((char*) &icount, sizeof(icount));
 
+	// an example of range based 
 	for ( Inventory* ielem : inv ) {
 		// if not NULL pointer
 		if (ielem) {
