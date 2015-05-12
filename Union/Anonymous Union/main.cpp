@@ -12,7 +12,6 @@ struct Test
 
 int main()
 {
-	/*
 	union
 	{
 		unsigned int n;
@@ -26,7 +25,7 @@ int main()
 		<< "n = 0x"   << n << " (@ 0x" << &n << ")"
 		<< "\ns = 0x" << s << " (@ 0x" << &s << ")"
 		<< std::endl;
-	*/
+	
 	Test t;
 
 	t.n1 = 0x12345678;
