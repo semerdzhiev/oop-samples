@@ -72,7 +72,7 @@ Array& Array::operator=(Array const & other)
 /// остава непроменено (както е било преди извикването ѝ).
 ///
 /// \exception std::bad_alloc
-///    Ако функцията е успее да задели памет за копирането
+///     Ако функцията е успее да задели памет за копирането
 ///
 void Array::CopyFrom(Array const & other)
 {
@@ -87,8 +87,8 @@ void Array::CopyFrom(Array const & other)
 /// Променя размера на масива
 ///
 /// \param NewSize
-///    Новият размер на масива. Може да бъде по-голям
-///    или по-малък от настоящия.
+///     Новият размер на масива. Може да бъде по-голям
+///     или по-малък от настоящия.
 ///
 /// Нека старият размер на масива е S, а новият - N.
 /// Ако S <= N, елементите на масива до позиция
@@ -98,8 +98,8 @@ void Array::CopyFrom(Array const & other)
 ///
 /// Ако функцията не успее, съдържанието на масива остава непроменено.
 ///
-/// \throws std::bad_alloc
-///		Ако заделянето на памет за масива не успее.
+/// \exception std::bad_alloc
+///     Ако заделянето на памет за масива не успее.
 ///
 void Array::SetSize(size_t NewSize)
 {
@@ -148,7 +148,7 @@ void Array::Release()
 /// index в масива като го прави равен на Value
 ///
 /// \exception out_of_range
-///		Ако index излиза от размерите на масива.
+///     Ако index излиза от размерите на масива.
 ///
 void Array::SetAt(size_t index, int Value)
 {
@@ -163,7 +163,7 @@ void Array::SetAt(size_t index, int Value)
 /// Връща елемента, който се намира на позиция index в масива.
 ///
 /// \exception out_of_range
-///		Ако index излиза от размерите на масива.
+///     Ако index излиза от размерите на масива.
 ///
 int Array::GetAt(size_t index) const
 {
