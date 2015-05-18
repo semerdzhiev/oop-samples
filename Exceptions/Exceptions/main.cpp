@@ -100,7 +100,7 @@ void ThrowSomething()
 		throw Box("Thrown by ThrowSomething()");
 
 	default:
-		throw std::exception("Really? You failed to enter a number between 1 and 5?!");
+		throw std::exception("Really? You failed to enter a number between 1 and 9?!");
 	}
 
 	std::cout << "Will this line ever be executed?\n";

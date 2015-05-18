@@ -28,10 +28,27 @@ Gamma, Erich; Helm, Richard; Johnson, Ralph; Vlissides, John (1995) **Design Pat
 
 
 
+Обработка на грешки
+-------------
+
+Errno Codes by Platform. http://www.ioplex.com/~miallen/errcmp.html
+
+The GNU C Library: 2.1 Checking for Errors. http://www.gnu.org/software/libc/manual/html_node/Checking-for-Errors.html
+
+The GNU C Library: 2.2 Error Codes. http://www.gnu.org/software/libc/manual/html_node/Error-Codes.html
+
+The GNU C Library: 2.3 Error Messages. http://www.gnu.org/software/libc/manual/html_node/Error-Messages.html
+
+
+
 Git
 -------------
 
 Chacon, Scott; Straub, Ben (2014) **Pro Git, 2nd Edition**. http://git-scm.com/book/en/v2
+
+Mary Rose Cook. Git from the inside out. http://maryrosecook.com/blog/post/git-from-the-inside-out
+
+Mary Rose Cook. Git in six hundred words. http://maryrosecook.com/blog/post/git-in-six-hundred-words
 
 
 
