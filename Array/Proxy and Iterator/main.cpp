@@ -4,7 +4,7 @@
 
 int main()
 {
-	// Test Array::ElementProxy
+	// Тестваме Array::ElementProxy
 	Array arr;
 
 	arr[5] = 100;
@@ -17,7 +17,7 @@ int main()
 	std::cout << arr[5] << "\n";
 
 
-	// Use an iterator to initialize the array
+	// Обхождаме масива с итератор и инициализираме елементите му.
 	Array::Iterator it = arr.GetIterator();
 
 	int counter = 0;
@@ -29,7 +29,8 @@ int main()
 	}
 
 
-	// Use the backward iterator to print the contents of the array
+	// Използваме Array::BackwardIterator,
+	// за да изведем елементите на масива в обратен ред
 	Array::BackwardIterator bit = arr.GetBackwardIterator();
 
 	std::cout << "Array contents:";

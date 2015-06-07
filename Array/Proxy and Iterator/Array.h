@@ -6,7 +6,7 @@ class Array
 {
 private:
 	///
-	/// Represents one of the array elements
+	/// Представя един от елементите на масива
 	///
 	class ElementProxy
 	{
@@ -23,8 +23,8 @@ private:
 
 public:
 	///
-	/// Iterates the array sequentially
-	/// starting from a specified initial position
+	/// Итерира елементите на масива последователно,
+	/// започвайки от дадена начална позиция
 	///
 	class Iterator
 	{
@@ -45,8 +45,8 @@ public:
 	};
 
 	///
-	/// Iterates the array backwards
-	/// starting from a specified initial position
+	/// Итерира елементите на масива в обратен ред,
+	/// започвайки от дадена начална позиция
 	///
 	class BackwardIterator : public Iterator
 	{
