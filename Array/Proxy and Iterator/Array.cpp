@@ -1,5 +1,6 @@
 ﻿#include <algorithm>
 #include <iostream>
+#include <assert.h>
 
 #include "Array.h"
 
@@ -228,6 +229,17 @@ Array Array::operator+(Array const &other) const
 	return result;
 }
 
+Array::Iterator Array::GetIterator()
+{
+	return Iterator(this, 0);
+}
+
+Array::BackwardIterator Array::GetBackwardIterator()
+{
+	return BackwardIterator(this, GetSize() - 1);
+}
+
+//----------------------------------------------------------------------------------------------
 
 ///
 /// Връща елемента на масива, който се намира на позиция index
@@ -294,6 +306,61 @@ Array::ElementProxy& Array::ElementProxy::operator=(const int Value)
 	return *this;
 }
 
+//----------------------------------------------------------------------------------------------
+
+Array::Iterator::Iterator(Array* pArray, size_t InitialPos)
+{
+	this->pArray = pArray;
+	this->InitialPos = this->CurrentPos = InitialPos;
+	EndReached = false;
+}
+
+void Array::Iterator::Rewind()
+{
+	CurrentPos = InitialPos;
+	EndReached = false;
+}
+
+bool Array::Iterator::Next()
+{
+	EndReached = EndReached || (++CurrentPos >= pArray->GetSize());
+
+	return EndReached;
+}
+
+bool Array::Iterator::IsOver() const
+{
+	return EndReached;
+}
+
+int& Array::Iterator::Value()
+{
+	assert(!IsOver());
+
+	return pArray->pArr[CurrentPos];
+}
+
+size_t Array::Iterator::Index() const
+{
+	return CurrentPos;
+}
+
+Array::BackwardIterator::BackwardIterator(Array* pArray, size_t InitialPos)
+	: Array::Iterator(pArray, InitialPos)
+{
+}
+
+bool Array::BackwardIterator::Next()
+{
+	EndReached = EndReached || CurrentPos == 0;
+
+	if (!EndReached)
+		CurrentPos--;
+
+	return EndReached;
+}
+
+//----------------------------------------------------------------------------------------------
 
 ///
 /// Извежда съдържанието на масива arr в потока out

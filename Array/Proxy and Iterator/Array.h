@@ -4,6 +4,10 @@
 
 class Array
 {
+private:
+	///
+	/// Represents one of the array elements
+	///
 	class ElementProxy
 	{
 	private:
@@ -16,6 +20,42 @@ class Array
 		operator int() const;
 		ElementProxy& operator=(const int);
 	};
+
+public:
+	///
+	/// Iterates the array sequentially
+	/// starting from a specified initial position
+	///
+	class Iterator
+	{
+	protected:
+		Array* pArray;
+		size_t InitialPos;
+		size_t CurrentPos;
+		bool EndReached;
+	public:
+		Iterator(Array*, size_t);
+
+	public:
+		void Rewind();
+		bool Next();
+		bool IsOver() const;
+		int& Value();
+		size_t Index() const;
+	};
+
+	///
+	/// Iterates the array backwards
+	/// starting from a specified initial position
+	///
+	class BackwardIterator : public Iterator
+	{
+	public:
+		BackwardIterator(Array*, size_t);
+		bool Next();
+	};
+
+	friend class Iterator;
 
 private:
 	int *pArr;
@@ -47,6 +87,9 @@ public:
 	int GetAt(size_t index) const;
 
 	void Release();
+
+	Iterator GetIterator();
+	BackwardIterator GetBackwardIterator();
 };
 
 std::ostream& operator<< (std::ostream&, Array const&);

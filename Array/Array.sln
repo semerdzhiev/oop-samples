@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Array", "Array\Array.vcxproj", "{0D1A2BB3-7350-4294-92BB-4F8603609704}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Array with proxy", "Array with proxy\Array with proxy.vcxproj", "{AFE18427-29F0-43D3-9BE5-9DB7722D4BA2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Proxy and Iterator", "Proxy and Iterator\Proxy and Iterator.vcxproj", "{AFE18427-29F0-43D3-9BE5-9DB7722D4BA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
