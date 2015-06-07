@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 
 #include "Array.h"
 
@@ -6,11 +6,11 @@ int main()
 {
 	Array<char> arr;
 
-	// Запълваме масива с букви отзад-напред
+	// Р—Р°РїСЉР»РІР°РјРµ РјР°СЃРёРІР° СЃ Р±СѓРєРІРё РѕС‚Р·Р°Рґ-РЅР°РїСЂРµРґ
 	for (char c = 'z'; c >= 'a'; c--)
 		arr[c - 'a'] = c;
 
-	// Извеждаме резултата с помощта на итератор
+	// РР·РІРµР¶РґР°РјРµ СЂРµР·СѓР»С‚Р°С‚Р° СЃ РїРѕРјРѕС‰С‚Р° РЅР° РёС‚РµСЂР°С‚РѕСЂ
 	std::cout << "The alphabet: ";
 
 	for (Array<char>::Iterator it = arr.GetIterator(); !it.IsOver(); it.Next())
