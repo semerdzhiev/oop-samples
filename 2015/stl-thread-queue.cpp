@@ -10,29 +10,29 @@
 using namespace std;
 
 int main() {
-	list<int> q;
+    list<int> q;
 
-	thread pump([&] {
-		for ( auto i = 0; i < 32; i++ ) {
-			q.push_back(rand() % 256);
-			this_thread::sleep_for(chrono::milliseconds(512));
-		}
-	});
+    thread pump([&] {
+        for ( auto i = 0; i < 32; i++ ) {
+            q.push_back(rand() % 256);
+            this_thread::sleep_for(chrono::milliseconds(512));
+        }
+    });
 
-	thread feed([&] {
-		while ( 42 ) {
-			cout << q.front() << endl;
-			q.pop_front();
+    thread feed([&] {
+        while ( 42 ) {
+            cout << q.front() << endl;
+            q.pop_front();
 
-			while (q.empty())
-				this_thread::sleep_for(chrono::milliseconds(128));
-		}
-	});
+            while (q.empty())
+                this_thread::sleep_for(chrono::milliseconds(128));
+        }
+    });
 
-	pump.join();
-	feed.detach();
+    pump.join();
+    feed.detach();
 
-	return 0;
+    return 0;
 }
 
 
