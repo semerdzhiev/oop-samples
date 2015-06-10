@@ -10,6 +10,7 @@ private:
 
 public:
 	Circle();
+	Circle(double);
 	virtual ~Circle();
 
 	virtual double Area() const;

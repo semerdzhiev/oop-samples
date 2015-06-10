@@ -4,15 +4,29 @@
 
 Rectangle::Rectangle()
 {
-	std::cout << "[Entering Rectangle::Rectangle()]\n";
+	std::clog << "[Entering Rectangle::Rectangle()]\n";
 	Width = 0;
 	Height = 0;
 }
 
 
+Rectangle::Rectangle(double Width, double Height)
+{
+	std::clog
+		<< "[Entering Rectangle::Rectangle("
+		<< Width
+		<< ", "
+		<< Height
+		<< ")]\n";
+
+	this->Width = Width;
+	this->Height = Height;
+}
+
+
 Rectangle::~Rectangle()
 {
-	std::cout << "[Entering Rectangle::~Rectangle()]\n";
+	std::clog << "[Entering Rectangle::~Rectangle()]\n";
 }
 
 
@@ -35,6 +49,9 @@ void Rectangle::Print() const
 
 void Rectangle::Input()
 {
+	std::cin.clear();
+	std::cin.sync();
+
 	std::cout << "Enter rectangle information below\n  Width: ";
 	std::cin >> Width;
 	std::cout << "  Height: ";

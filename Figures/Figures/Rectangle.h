@@ -11,6 +11,7 @@ private:
 
 public:
 	Rectangle();
+	Rectangle(double, double);
 	virtual ~Rectangle();
 
 	virtual double Area() const;

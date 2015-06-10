@@ -1,38 +1,44 @@
 ﻿#include <iostream>
 #include <vector>
 
-#include "Circle.h"
-#include "Rectangle.h"
+#include "Figure.h"
 
+#include "StdinFigureFactory.h"
+#include "FileFigureFactory.h"
 
 /// Тип за вектор от фигури
 typedef std::vector<Figure*> FIGVECTOR;
 
-
-///
-/// Създава нова фигура
-///
-Figure* CreateFigure()
+FigureFactory* ChooseFactory()
 {
-	int choice;
+	char choice;
 
-	std::cout <<
-		"What do you want to enter?\n"
-		"  1 - Circle\n"
-		"  2 - Rectangle\n"
-		"Your choice: ";
+	std::cout
+		<< "How do you want to enter the figures?"
+		<< "\n   [k] - keyboard"
+		<< "\n   [f] - read from file"
+		<< "\n: ";
 	std::cin >> choice;
 
 	switch (choice)
 	{
-	case 1:
-		return new Circle();
+	case 'K':
+	case 'k':
+		return new StdinFigureFactory;
 
-	case 2:
-		return new Rectangle();
+	case 'F':
+	case'f':
+		std::cin.clear();
+		std::cin.sync();
+
+		std::cout << "Filename: ";
+		char buffer[_MAX_PATH];
+		std::cin.getline(buffer, _MAX_PATH);
+
+		return new FileFigureFactory(buffer);
 
 	default:
-		throw std::exception("Wrong input");
+		throw std::exception("Incorrect factory type");
 	}
 }
 
@@ -40,33 +46,55 @@ int main()
 {
 	FIGVECTOR figures;
 
+	//
+	// Създаваме подходяща фабрика (factory),
+	// с която ще четем фигурите
+	//
+	FigureFactory* pFactory;
+	
+	try
+	{
+		pFactory = ChooseFactory();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr
+			<< "ERROR! Factory creation failed, reason: "
+			<< e.what()
+			<< "\n";
+		return 1;
+	}
+
+
+	//
 	// Въвеждаме фигурите
-	char choice;
+	//
+	Figure* pFigure = NULL;
 
 	do
 	{
 		try {
-			Figure* pFigure = CreateFigure();
-			pFigure->Input();
-			figures.push_back(pFigure);
+			pFigure = pFactory->CreateFigure();
+			
+			if(pFigure)
+				figures.push_back(pFigure);
 		}
 		catch (std::bad_alloc& e)
 		{
-			std::cerr << "ERROR: Allocation failed! (reason: " << e.what() << ")\n";
+			std::cerr << "ERROR: Allocation failed! Reason: " << e.what() << "\n";
 			break;
 		}
 		catch (std::exception& e)
 		{
-			std::cerr << "ERROR: Operation failed! (reason: " << e.what() << ")\n";
+			std::cerr << "ERROR: Operation failed! Reason: " << e.what() << "\n";
 		}
 
-		std::cout << "Enter another figure (y/n): ";
-		std::cin >> choice;
-	
-	} while (choice == 'y' || choice == 'Y');
+	} while (pFactory->CanCreate() && pFigure);
 
 
+	//
 	// Извеждаме въведените фигури и общата им площ
+	//
 	double area = 0;
 
 	for (size_t i = 0; i < figures.size(); i++)
@@ -78,11 +106,15 @@ int main()
 	std::cout << "Total figure area is " << area << std::endl;
 
 
+	//
 	// Освобождаваме заетата памет
+	//
 	for (size_t i = 0; i < figures.size(); i++)
 	{
 		delete figures.at(i);
 	}
+
+	delete pFactory;
 
 	return 0;
 }

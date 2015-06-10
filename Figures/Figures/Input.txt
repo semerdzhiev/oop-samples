@@ -1,0 +1,6 @@
+Circle 10
+Rectangle 10 10
+Circle 20
+Circle 100
+Rectangle 10
+Circle 1

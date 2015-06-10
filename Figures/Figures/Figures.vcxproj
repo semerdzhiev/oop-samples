@@ -78,13 +78,20 @@
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="FigureFactory.h" />
+    <ClInclude Include="Figures.h" />
+    <ClInclude Include="FileFigureFactory.h" />
     <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="StdinFigureFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="FigureFactory.cpp" />
+    <ClCompile Include="FileFigureFactory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="StdinFigureFactory.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
