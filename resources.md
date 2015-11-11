@@ -1,8 +1,8 @@
-Полезни източници
+Обектно-ориентирано програмиране на C++: Полезни източници
 ===================
 
 
-ООП на C++
+Книги и статии
 -------------
 
 Майерс, Скот (2004) **По-ефективен C++: 35 начина да подобрите своите програми и проекти**. София: ЗеСТ Прес. ISBN 954-9341-03-8.
@@ -17,6 +17,9 @@ Stroustrup, Bjarne (2014) **Programming: Principles and Practice Using C++, 2nd 
 
 Stroustrup, Bjarne (2013) **The C++ Programming Language, 4th Edition**. Addison-Wesley. ISBN 978-0321563842.
 
+Vandevoorde, David; Josuttis, Nicolai M. (2002) **C++ Templates: The Complete Guide**. Addison-Wesley. ISBN 0201734842.
+
+Copy elision. http://en.cppreference.com/w/cpp/language/copy_elision
 
 
 Шаблони за дизайн
@@ -43,6 +46,12 @@ The GNU C Library: 2.3 Error Messages. http://www.gnu.org/software/libc/manual/h
 
 Git
 -------------
+
+Git (Official). https://git-scm.com/
+
+GitHub Desktop. https://desktop.github.com/
+
+Atlassian SourceTree. https://www.atlassian.com/software/sourcetree/overview
 
 Chacon, Scott; Straub, Ben (2014) **Pro Git, 2nd Edition**. http://git-scm.com/book/en/v2
 
