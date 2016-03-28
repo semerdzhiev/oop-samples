@@ -1,5 +1,14 @@
+/********************************************************************
+*
+* This file is part of the Data Structures in C++ Course Examples package.
+*
+* Author: Atanas Semerdzhiev
+* URL: https://github.com/semerdzhiev/sdp-samples
+*
+*/
+
 // 
-// Програмата извежда на екрана размера на даден файл
+// This program outputs the size of a file (in bytes) to STDOUT
 //
 
 #include <iostream>
@@ -10,14 +19,13 @@ int main(int argc, char* argv[])
 {
 	std::ifstream in;
 
-	// Проверяваме дали пътят до файла е подаден от командния ред
+	// Check whether the file path has been passed
 	if(argc != 2)
 	{
-		// Ако пътят не е подаден от командния ред,
-		// даваме възможност на потребителя да го въведе
+		// If the path was not passed as an argument,
+        // we give the user an option to enter it now
 
-		// Създаваме буфер, в който да съхраним името на файла
-		// _MAX_PATH е вградена константа
+		// This buffer will store the file path
 		char buffer[_MAX_PATH];
 
 		std::cout << "Path: ";
@@ -27,28 +35,27 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		// Пътят към файла е подаден от командния ред
+		// The path has been passed as an argument
 		in.open(argv[1]);
 	}
 
-	// Проверяваме дали файлът е бил отворен успешно
+	// Check whether the file has been opened successfully
 	if( ! in)
 	{
-		// Ако това не е така, извеждаме съобщение за грешка
 		std::cerr << "Cannot open the file for reading!\n";
 		return 1;
 	}
 
-	// Взимаме размера на файла като отидем в неговия край
-	// и проверим текущата позиция
+	// We obtain the file size by seeking to its end and
+    // then checking the current position
 	in.seekg(0, std::ios::end);
 
 	size_t size = in.tellg();
 
-	// Затваряме файла, защото повече няма да го използваме
+	// We no longer need the file, so we can close it
 	in.close();
 
-	// Извеждаме размера на файла
+	// Display the size
 	std::cout << "Size: " << size << " bytes\n";
 
 	return 0;
