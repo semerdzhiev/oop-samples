@@ -62,7 +62,7 @@ char* Person::family(const char *nfamily = NULL) {
 		strcpy_s(_family, nlen+1, nfamily);
 	}
 
-	return _name;
+	return _family;
 }
 
 
