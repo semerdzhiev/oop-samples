@@ -19,6 +19,8 @@ Stroustrup, Bjarne (2014) **Programming: Principles and Practice Using C++, 2nd 
 
 Stroustrup, Bjarne (2013) **The C++ Programming Language, 4th Edition**. Addison-Wesley. ISBN 978-0321563842.
 
+Reese, Richard M (2013) **Understanding and Using C Pointers. Core Techniques for Memory Management.** O'Reilly Media. ISBN 978-1-4493-4418-4.
+
 Vandevoorde, David; Josuttis, Nicolai M. (2002) **C++ Templates: The Complete Guide**. Addison-Wesley. ISBN 0201734842.
 
 Copy elision. http://en.cppreference.com/w/cpp/language/copy_elision
