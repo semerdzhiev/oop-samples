@@ -3,6 +3,7 @@
 
 #include "Student.h"
 
+
 ///
 /// Allocates a new string and copies the contents of value
 ///
@@ -34,13 +35,41 @@ void Student::SetNewValue(char *& ptr, const char * value)
 
 
 ///
-/// Initializes an empty Student object
+/// Default constructor: Initializes an empty Student object
 ///
 Student::Student()
 {
+    std::cout
+        << "[0x"
+        << this
+        << "] Entering Student::Student()\n";
+
     Fn = 0;
     Name = NULL;
     Phone = NULL;
+}
+
+
+///
+/// Initializes a new Student object with specific values 
+///
+Student::Student(unsigned int Fn, const char* Name, const char* Phone)
+{
+    std::cout
+        << "[0x"
+        << this
+        << "] Entering Student::Student("
+        << Fn << ", "
+        << Name << ", "
+        << Phone << "\n";
+
+    this->Fn = 0;
+    this->Name = NULL;
+    this->Phone = NULL;
+
+    SetFn(Fn);
+    SetName(Name);
+    SetPhone(Phone);
 }
 
 
@@ -49,8 +78,68 @@ Student::Student()
 ///
 Student::~Student()
 {
+    std::cout
+        << "[0x"
+        << this
+        << "] Entering Student::~Student()\n";
+
     delete[] Name;
     delete[] Phone;
+}
+
+///
+/// Copy constructor
+///
+Student::Student(Student const & other)
+{
+    std::cout
+        << "[0x"
+        << this
+        << "] Entering Student::Student([0x"
+        << &other
+        << "])\n";
+
+    Fn = 0;
+    Name = NULL;
+    Phone = NULL;
+
+    CopyFrom(other);
+}
+
+
+///
+/// Assignment operator
+///
+Student& Student::operator=(Student const& other)
+{
+    std::cout
+        << "[0x"
+        << this
+        << "] Entering Student::operator=([0x"
+        << &other
+        << "])\n";
+
+
+    if (this != &other)
+    {
+        CopyFrom(other);
+    }
+
+    return *this;
+}
+
+
+///
+/// Copies the data from another Student object to this one.
+///
+/// The function assumes that both objects have been
+/// correctly initalized and in correct state.
+///
+void Student::CopyFrom(Student const & other)
+{
+    SetFn(other.GetFn());
+    SetName(other.GetName());
+    SetPhone(other.GetPhone());
 }
 
 

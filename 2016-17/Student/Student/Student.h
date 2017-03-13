@@ -32,10 +32,15 @@ private:
 
 private:
     void SetNewValue(char*& ptr, const char* value);
+    void CopyFrom(Student const& other);
 
 public:
     Student();
+    Student(unsigned int Fn, const char* Name, const char* Phone);
+    Student(Student const& other);
     ~Student();
+
+    Student& operator=(Student const& other);
 
     unsigned int GetFn() const;
     void SetFn(unsigned int value);
