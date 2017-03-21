@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Ucn.h"
 
 ///
 /// Represents a student from Sofia University
@@ -52,4 +53,5 @@ public:
     void SetPhone(const char* value);
 
     void Print() const;
+    static void PrintSizeInfo();
 };

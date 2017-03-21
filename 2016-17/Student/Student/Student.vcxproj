@@ -145,8 +145,10 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="StudentCollection.cpp" />
+    <ClCompile Include="Ucn.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ucn.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="StudentCollection.h" />
   </ItemGroup>

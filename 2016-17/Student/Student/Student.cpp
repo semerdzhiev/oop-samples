@@ -225,3 +225,20 @@ void Student::Print() const
         << "\nPhone: "  << GetPhone()
         << "\n\n";
 }
+
+void Student::PrintSizeInfo()
+{
+    std::cout
+        << "The size of a Student object is "
+        << sizeof(Student)
+        << "\n";
+
+    std::cout
+        << "\nOffset between Student and Fn is "
+        << offsetof(Student, Fn)
+        << "\nOffset between Student and Name is "
+        << offsetof(Student, Name)
+        << "\nOffset between Student and Phone is "
+        << offsetof(Student, Phone)
+        << "\n";
+}
