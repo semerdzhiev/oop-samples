@@ -84,7 +84,7 @@ inline int Ucn::GetUcnYearRaw(unsigned long long Ucn)
 ///
 Ucn::Ucn()
 {
-    Value = 0;
+    m_Value = 0;
 }
 
 
@@ -107,11 +107,20 @@ Ucn::Ucn(const char * Value)
 
 
 ///
+/// Checks whether two UCN are the same
+///
+bool Ucn::operator==(const Ucn & other) const
+{
+	return m_Value == other.m_Value;
+}
+
+
+///
 /// Sets the value of the UCN object
 ///
 void Ucn::FromNumber(unsigned long long Value)
 {
-    this->Value = Value;
+    this->m_Value = Value;
 }
 
 
@@ -129,7 +138,7 @@ void Ucn::FromString(const char * Value)
 ///
 unsigned long long Ucn::ToNumber() const
 {
-    return Value;
+    return m_Value;
 }
 
 
@@ -142,9 +151,9 @@ const char * Ucn::ToString() const
 
     // If the number has more than 10 digits (not a valid UCN)
     // it will not fit in the buffer
-    if (Value < 10000000000)
+    if (m_Value < 10000000000)
     {
-        unsigned long long Temp = Value;
+        unsigned long long Temp = m_Value;
         int i = UcnSize - 1;
 
         while (Temp > 0)
@@ -164,7 +173,7 @@ const char * Ucn::ToString() const
 ///
 bool Ucn::VerifyDate() const
 {
-    return GetUcnMonthRaw(Value) <= 52 &&
+    return GetUcnMonthRaw(m_Value) <= 52 &&
            IsValidUcnDate(GetDay(), GetMonth(), GetYear());
 }
 
@@ -177,7 +186,7 @@ bool Ucn::VerifyChecksum() const
     int UcnDigitWeights[] = { 2, 4, 8, 5, 10, 9, 7, 3, 6 };
 
     int weightedSum = 0;
-    unsigned long long temp = Value / 10;
+    unsigned long long temp = m_Value / 10;
     int i = UcnSize - 2;
 
     while (temp)
@@ -192,7 +201,7 @@ bool Ucn::VerifyChecksum() const
     if (checksum == 10)
         checksum = 0;
 
-    return checksum == Value % 10;
+    return checksum == m_Value % 10;
 }
 
 
@@ -213,7 +222,7 @@ bool Ucn::IsValid() const
 ///
 bool Ucn::IsMale() const
 {
-    return ((Value / 10) % 10) % 2 == 0;
+    return ((m_Value / 10) % 10) % 2 == 0;
 }
 
 
@@ -240,9 +249,9 @@ bool Ucn::IsFemale() const
 ///
 int Ucn::GetYear() const
 {
-    int MonthRawValue = GetUcnMonthRaw(Value);
+    int MonthRawValue = GetUcnMonthRaw(m_Value);
         
-    int Year = 1900 + GetUcnYearRaw(Value);
+    int Year = 1900 + GetUcnYearRaw(m_Value);
 
     if (MonthRawValue >= 40)
         Year += 100;
@@ -263,7 +272,7 @@ int Ucn::GetYear() const
 ///
 int Ucn::GetMonth() const
 {
-    return GetUcnMonthRaw(Value) % 20;
+    return GetUcnMonthRaw(m_Value) % 20;
 }
 
 
@@ -277,5 +286,5 @@ int Ucn::GetMonth() const
 ///
 int Ucn::GetDay() const
 {
-    return (Value / 10000) % 100;
+    return (m_Value / 10000) % 100;
 }

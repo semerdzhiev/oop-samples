@@ -7,7 +7,7 @@ private:
     static const int UcnSize;
 
     /// The UCN number
-    unsigned long long Value;
+    unsigned long long m_Value;
 
 public:
     static bool IsValidUcnDate(int Day, int Month, int Year);
@@ -20,6 +20,8 @@ public:
     Ucn();
     Ucn(unsigned long long Value);
     Ucn(const char* Value);
+
+	bool operator==(const Ucn & other) const;
 
     void FromNumber(unsigned long long Value);
     void FromString(const char* value);

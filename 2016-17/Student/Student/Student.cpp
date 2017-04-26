@@ -5,71 +5,27 @@
 
 
 ///
-/// Allocates a new string and copies the contents of value
-///
-void Student::SetNewValue(char *& ptr, const char * value)
-{
-    // If NULL has been passed, free the memory instead
-    if (!value)
-    {
-        delete[] ptr;
-        ptr = NULL;
-        return;
-    }
-
-    // If a valid string has been passed, make a copy
-    try {
-        size_t BufferSize = strlen(value) + 1;
-
-        char* buffer = new char[BufferSize];
-        delete[] ptr;
-        ptr = buffer;
-
-        strcpy_s(ptr, BufferSize, value);
-    }
-    catch (std::bad_alloc&)
-    {
-        std::cerr << "Not enough memory!\n";
-    }
-}
-
-
-///
 /// Default constructor: Initializes an empty Student object
 ///
 Student::Student()
 {
-    std::cout
-        << "[0x"
-        << this
-        << "] Entering Student::Student()\n";
+	std::cout << "[0x" << this << "] Student::Student()\n";
 
-    Fn = 0;
-    Name = NULL;
-    Phone = NULL;
+    m_Fn = 0;
 }
 
 
 ///
 /// Initializes a new Student object with specific values 
 ///
-Student::Student(unsigned int Fn, const char* Name, const char* Phone)
+Student::Student(unsigned int Fn, const char* Name, const char* Phone) : Person(Name, Phone)
 {
-    std::cout
-        << "[0x"
-        << this
-        << "] Entering Student::Student("
+	std::cout << "[0x" << this << "] Student::Student("
         << Fn << ", "
         << Name << ", "
-        << Phone << "\n";
-
-    this->Fn = 0;
-    this->Name = NULL;
-    this->Phone = NULL;
+        << Phone << ")\n";
 
     SetFn(Fn);
-    SetName(Name);
-    SetPhone(Phone);
 }
 
 
@@ -78,13 +34,7 @@ Student::Student(unsigned int Fn, const char* Name, const char* Phone)
 ///
 Student::~Student()
 {
-    std::cout
-        << "[0x"
-        << this
-        << "] Entering Student::~Student()\n";
-
-    delete[] Name;
-    delete[] Phone;
+	std::cout << "[0x" << this << "] Student::~Student()\n";
 }
 
 ///
@@ -92,16 +42,7 @@ Student::~Student()
 ///
 Student::Student(Student const & other)
 {
-    std::cout
-        << "[0x"
-        << this
-        << "] Entering Student::Student([0x"
-        << &other
-        << "])\n";
-
-    Fn = 0;
-    Name = NULL;
-    Phone = NULL;
+	std::cout << "[0x" << this << "] Student::Student([0x" << &other << "])\n";
 
     CopyFrom(other);
 }
@@ -110,23 +51,17 @@ Student::Student(Student const & other)
 ///
 /// Assignment operator
 ///
-Student& Student::operator=(Student const& other)
-{
-    std::cout
-        << "[0x"
-        << this
-        << "] Entering Student::operator=([0x"
-        << &other
-        << "])\n";
-
-
-    if (this != &other)
-    {
-        CopyFrom(other);
-    }
-
-    return *this;
-}
+//Student& Student::operator=(Student const& other)
+//{
+//	std::cout << "[0x" << this << "] Student::operator=([0x" << &other << "])\n";
+//
+//    if (this != &other)
+//    {
+//        CopyFrom(other);
+//    }
+//
+//    return *this;
+//}
 
 
 ///
@@ -138,8 +73,7 @@ Student& Student::operator=(Student const& other)
 void Student::CopyFrom(Student const & other)
 {
     SetFn(other.GetFn());
-    SetName(other.GetName());
-    SetPhone(other.GetPhone());
+	Person::CopyFrom(other);
 }
 
 
@@ -148,7 +82,7 @@ void Student::CopyFrom(Student const & other)
 ///
 unsigned int Student::GetFn() const
 {
-    return Fn;
+    return m_Fn;
 }
 
 
@@ -161,54 +95,8 @@ unsigned int Student::GetFn() const
 ///
 void Student::SetFn(unsigned int value)
 {
-    if (Fn <= 89999)
-        Fn = value;
-}
-
-
-///
-/// Returns the name of the student
-///
-/// The function always returns a valid null-terminated
-/// C++ string (i.e. it never returns NULL).
-/// If no name has been specified for the student,
-/// the function returns the empty string.
-///
-const char * Student::GetName() const
-{
-    return Name ? Name : "";
-}
-
-
-///
-/// Modifies the name of the student
-///
-void Student::SetName(const char * value)
-{
-    SetNewValue(Name, value);
-}
-
-
-///
-/// Returns the phone of the student
-///
-/// The function always returns a valid null-terminated
-/// C++ string (i.e. it never returns NULL).
-/// If no name has been specified for the student,
-/// the function returns the empty string.
-///
-const char * Student::GetPhone() const
-{
-    return Phone ? Phone : "";
-}
-
-
-///
-/// Modifies the phone of the student
-///
-void Student::SetPhone(const char * value)
-{
-    SetNewValue(Phone, value);
+    if (value <= 89999)
+        m_Fn = value;
 }
 
 
@@ -220,10 +108,10 @@ void Student::Print() const
 {
     std::cout
         << "A student object at 0x" << this
-        << "\nFN: "     << GetFn()
-        << "\nName: "   << GetName()
-        << "\nPhone: "  << GetPhone()
-        << "\n\n";
+        << "\n  FN\t" << GetFn()
+        << "\n";
+
+	Person::Print();
 }
 
 void Student::PrintSizeInfo()
@@ -233,12 +121,10 @@ void Student::PrintSizeInfo()
         << sizeof(Student)
         << "\n";
 
-    std::cout
-        << "\nOffset between Student and Fn is "
-        << offsetof(Student, Fn)
-        << "\nOffset between Student and Name is "
-        << offsetof(Student, Name)
-        << "\nOffset between Student and Phone is "
-        << offsetof(Student, Phone)
-        << "\n";
+	std::cout
+		<< "\nOffset between Student and Fn is "
+		<< offsetof(Student, m_Fn)
+		<< "\n";
+
+	Person::PrintSizeInfo();
 }
