@@ -1,10 +1,10 @@
 Обектно-ориентирано програмиране на C++: Полезни източници
-===================
+======
 
 Този списък е част от хранилището на курса Обектно-ориентирано програмиране  на C++ (https://github.com/semerdzhiev/oop-samples).
 
 
-Книги и статии
+Книги
 -------------
 
 Майерс, Скот (2004) **По-ефективен C++: 35 начина да подобрите своите програми и проекти**. София: ЗеСТ Прес. ISBN 954-9341-03-8.
@@ -23,7 +23,15 @@ Reese, Richard M (2013) **Understanding and Using C Pointers. Core Techniques fo
 
 Vandevoorde, David; Josuttis, Nicolai M. (2002) **C++ Templates: The Complete Guide**. Addison-Wesley. ISBN 0201734842.
 
-Copy elision. http://en.cppreference.com/w/cpp/language/copy_elision
+
+Статии
+------
+
+**Copy elision**. http://en.cppreference.com/w/cpp/language/copy_elision
+
+Jack W. Reeves (2006) **Multiple Inheritance Considered Useful**. Dr. Dobb's. http://www.drdobbs.com/cpp/multiple-inheritance-considered-useful/184402074
+
+Sean Batten (1997) **Casting in C++**. Dr. Dobb's. http://www.drdobbs.com/casting-in-c/184403316
 
 
 Шаблони за дизайн
@@ -75,4 +83,3 @@ C++ Reference. http://www.cplusplus.com/reference/
 Learn C++. http://www.learncpp.com/
 
 CProgramming.com. http://www.cprogramming.com/
-
