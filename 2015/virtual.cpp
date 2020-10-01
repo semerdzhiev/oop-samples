@@ -61,7 +61,6 @@ public:
     B() {
         printf("construct B \n");
     }
-
     virtual void whoami() {
         printf ("i am B \n");
     }
@@ -69,7 +68,6 @@ public:
 };
 
 class D : public C {
-
 public:
     D() {
         printf("construct D \n");
